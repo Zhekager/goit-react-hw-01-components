@@ -1,43 +1,44 @@
-import React from "react";
-import PropTypes from "prop-types";
-import defaultFoto from "../../img/unpluged.jpg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import defaultFoto from '../../img/unpluged.jpg';
+import styles from './Profile.module.css';
 
 const Profile = ({ name, tag, location, avatar, stats }) => (
-  <div class="profile">
-    <div class="description">
-      <img src={avatar} alt={name} class="avatar" />
-      <p class="name">{name}</p>
-      <p class="tag">@{tag}</p>
-      <p class="location">{location}</p>
-    </div>
+    <div className={styles.container}>
+        <div className={styles.description}>
+            <img src={avatar} alt={name} className={styles.avatar} />
+            <p className={styles.description_name}>{name}</p>
+            <p className={styles.description_tag}>@{tag}</p>
+            <p className={styles.description_location}>{location}</p>
+        </div>
 
-    <ul class="stats">
-      <li>
-        <span class="label">Followers</span>
-        <span class="quantity">{stats.followers}</span>
-      </li>
-      <li>
-        <span class="label">Views</span>
-        <span class="quantity">{stats.views}</span>
-      </li>
-      <li>
-        <span class="label">Likes</span>
-        <span class="quantity">{stats.likes}</span>
-      </li>
-    </ul>
-  </div>
+        <ul className={styles.stats}>
+            <li className={styles.contain_block}>
+                <span className={styles.stats_label}>Followers</span>
+                <span className={styles.stats_quantity}>{stats.followers}</span>
+            </li>
+            <li className={styles.contain_block}>
+                <span className={styles.stats_label}>Views</span>
+                <span className={styles.stats_quantity}>{stats.views}</span>
+            </li>
+            <li className={styles.contain_block}>
+                <span className={styles.stats_label}>Likes</span>
+                <span className={styles.stats_quantity}>{stats.likes}</span>
+            </li>
+        </ul>
+    </div>
 );
 
 Profile.defaultProps = {
-  avatar: defaultFoto,
+    avatar: defaultFoto,
 };
 
 Profile.propTypes = {
-  name: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  avatar: PropTypes.string,
-  stats: PropTypes.objectOf(PropTypes.number).isRequired,
+    name: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    stats: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 export default Profile;
